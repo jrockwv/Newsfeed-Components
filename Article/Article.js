@@ -112,3 +112,50 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+const schoolNews = document.querySelector('.articles');
+
+
+data.map(info => {
+schoolNews.appendChild(articles(info.title, info.date, info.firstParagraph, info.secondParagraph, info.thirdParagraph));
+})
+
+
+function articles(title, date, firstParagraph, secondParagraph, thirdParagraph) {
+  
+
+const mainArt = document.createElement('div');
+const artTitle = document.createElement('h2');
+const artDate = document.createElement('p');
+const artP1 = document.createElement('p');
+const artP2 = document.createElement('p');
+const artP3 = document.createElement('p');
+const artP4 = document.createElement('p');
+const expBut = document.createElement('span');
+
+mainArt.classList.add('.articles');
+expBut.classList.add('expandButton');
+artDate.classList.add('date');
+
+mainArt.appendChild(artTitle);
+mainArt.appendChild(artDate);
+mainArt.appendChild(artP1);
+mainArt.appendChild(artP2);
+mainArt.appendChild(artP3);
+mainArt.appendChild(expBut);
+mainArt.appendChild(artP4);
+
+artTitle.textContent = title;
+artDate.textContent = date;
+artP1.textContent = firstParagraph;
+artP2.textContent = secondParagraph;
+artP3.textContent = thirdParagraph;
+artP4.textContent = 'HarHarHar i added this!!!';
+expBut.textContent = 'Lets a Go!';
+
+
+expBut.addEventListener('click', () =>{
+  mainArt.classList.toggle('article-open');
+});
+
+return mainArt;
+}
